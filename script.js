@@ -9,7 +9,7 @@ $(document).ready(function () {
     let letterCounter = 0;
     let numberOfMistakes = 0;
     let my_div = $('#sentence');
-    let rstBtn = $(`<button id="reset">Reset</button>`);
+    let rstBtn = $(`<button id="reset">Restart Game</button>`);
     rstBtn.css("background-color", getRandomColor)
     rstBtn.css("color", "#F5F5F5")
     let sentences = ['ten ate neite ate nee enet ite ate inet ent eate','Too ato too nOt enot one totA not anot tOO aNot','oat itain oat tain nate eate tea anne inant nean','itant eate anot eat nato inate eat anot tain eat','nee ene ate ite tent tiet ent ine ene ete ene ate'];
@@ -112,7 +112,7 @@ $(document).ready(function () {
             $("#prompt-container").append(rstBtn);
             // confirm or cancel option
             rstBtn.click(function (e) {
-                if (window.confirm("Are you sure?")) {
+                if (window.confirm("Do you want to play a game?")) {
                     // command for refreshing the page
                     location.reload();
                 };
