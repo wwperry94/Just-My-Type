@@ -11,14 +11,21 @@ $(document).ready(function () {
     let my_div = $('#sentence');
     let rstBtn = $(`<button id="reset">Restart Game</button>`);
     rstBtn.css("background-color", getRandomColor)
-    rstBtn.css("color", "#F5F5F5")
-    let sentences = ['ten ate neite ate nee enet ite ate inet ent eate','Too ato too nOt enot one totA not anot tOO aNot','oat itain oat tain nate eate tea anne inant nean','itant eate anot eat nato inate eat anot tain eat','nee ene ate ite tent tiet ent ine ene ete ene ate'];
-    $('#target-letter').css("color", "#F5F5F5");
-    $('#sentence').css("color", "#F5F5F5");
-   
+    rstBtn.css("color", "white")
+    let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
+    $('#target-letter').css("color", "white");
+    $('#sentence').css("color", "white");
+    $('.timer').append("Seconds: " + seconds);
+    $('.timer').append('<br/>')
+    $('.timer').append("Typos: ", numberOfMistakes)
+    $('.timer').css("color", "white")
+
     // Hide lowerCase Keyboard
 
     uC.hide();
+
+    // Display current Sentence and next expected letter
+
     my_div.append(sentences[sentenceCounter]);
     $('#target-letter').append(sentences[sentenceCounter][letterCounter]);
 
@@ -50,7 +57,9 @@ $(document).ready(function () {
                 // *EXTRA* display timer whilst game is running
                 $('.timer').empty();
                 $('.timer').append("Seconds: " + seconds);
-                $('.timer').css("color", "#F5F5F5")
+                $('.timer').append('<br/>')
+                $('.timer').append("Typos ", numberOfMistakes)
+                $('.timer').css("color", "white")
                 letterCounter++
                 //clears letter display
                 $('#target-letter').empty()
@@ -58,7 +67,7 @@ $(document).ready(function () {
                 $('#target-letter').append(sentences[sentenceCounter][letterCounter]);
                 //moves the highlight over current letter
                 $('#yellow-block').css('left', '+=18px')
-                console.log("e.key", e.key, letterCounter);
+                console.log("keypressed", e.key, letterCounter);
                 //display when correct letter is pressed
                 $('#feedback').append(`<span class="glyphicon glyphicon-ok"></span>`)
             } else {
@@ -78,7 +87,6 @@ $(document).ready(function () {
             $('#target-letter').empty()
             $('#feedback').empty()
             $('#yellow-block').css('left', '5px')
-            
             my_div.append(sentences[sentenceCounter]);
         };
     })
@@ -86,13 +94,13 @@ $(document).ready(function () {
     // Unhighlight the key
 
     $(document).keyup(function (e) {
+        // display lower-case when not holding shift
         let key = e.which;
-        let asciiLetter = e.key.charCodeAt(0)
-        $(`#${asciiLetter}`).css("background-color", "#F5F5F5")
         if (key == 16) {
             uC.hide();
             lC.show();
         };
+        $('.key').css("background-color", "black")
         // Game Over Trigger
         let wpm = (52 / (seconds / 60) - 2 * numberOfMistakes)
         // logic for telling when the final letter of final sentence is typed
@@ -107,6 +115,8 @@ $(document).ready(function () {
             $('#prompt-container').append("Type Test Complete!");
             $('#prompt-container').append('<br/>');
             $('#prompt-container').append("Words per Minute ", wpm);
+            $('#prompt-container').append('<br/>');
+            $('#prompt-container').append("You had ", numberOfMistakes, " errors");
             $('#prompt-container').append('<br/>');
             // display our option to reset the 'game'
             $("#prompt-container").append(rstBtn);

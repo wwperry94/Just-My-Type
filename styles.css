@@ -5,11 +5,18 @@
 
 .body{
   background-color: rgb(14, 10, 71);
-  font-family: fantasy;
+  
 }
 
 #target {
   background-color: rgb(60, 12, 61);
+}
+
+.key {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 #prompt-container {
