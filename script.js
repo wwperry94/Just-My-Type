@@ -121,7 +121,7 @@ $(document).ready(function () {
             // display our option to reset the 'game'
             $("#prompt-container").append(rstBtn);
             // confirm or cancel option
-            rstBtn.click(function (e) {
+            rstBtn.click(function () {
                 if (window.confirm("Do you want to play a game?")) {
                     // command for refreshing the page
                     location.reload();
