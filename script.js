@@ -12,7 +12,7 @@ $(document).ready(function () {
     let rstBtn = $(`<button id="reset">Restart Game</button>`);
     rstBtn.css("background-color", getRandomColor)
     rstBtn.css("color", "white")
-    let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
+    let sentences = ['Sten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
     $('#target-letter').css("color", "white");
     $('#sentence').css("color", "white");
     $('.timer').append("Seconds: " + seconds);
